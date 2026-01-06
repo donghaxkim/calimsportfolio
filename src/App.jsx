@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
+import AboutMe from './components/AboutMe'; // Make sure this path matches where you put the file
 
 const App = () => {
-  // STATE: Controls whether the popup is visible
-  const [isContactOpen, setIsContactOpen] = useState(false);
+  // STATE: Tracks which section is active ('contact', 'about', or null)
+  const [activeSection, setActiveSection] = useState(null);
+
+  // Helper function to close any open section
+  const closeAll = () => setActiveSection(null);
 
   const menuItems = [
-    { id: '01', label: 'About Me' },
-    { id: '02', label: 'Experience' },
-    { id: '03', label: 'Portfolio' },
-    { id: '04', label: 'Surface Modeling' },
-    { id: '05', label: 'For Fun' },
+    { id: '01', label: 'About Me', action: () => setActiveSection('about') },
+    { id: '02', label: 'Experience', action: () => {} },
+    { id: '03', label: 'Portfolio', action: () => {} },
+    { id: '04', label: 'Surface Modeling', action: () => {} },
+    { id: '05', label: 'For Fun', action: () => {} },
   ];
 
   // STYLE VARIABLES
-  // text-[3.1vw]: Small, elegant size.
+  // text-[3.25vw]: Small, elegant size.
   // font-light: Thinner weight (300).
   const baseStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-light";
 
@@ -23,20 +27,22 @@ const App = () => {
   return (
     <main className="relative w-screen h-screen bg-white overflow-hidden select-none cursor-default font-helvetica">
       
-      {/* 1. BLUR WRAPPER: Wraps all main content to apply the blur effect */}
-      <div className={`w-full h-full transition-all duration-500 ease-in-out ${isContactOpen ? 'blur-sm opacity-50 scale-[0.99]' : ''}`}>
+      {/* 1. BLUR WRAPPER: Wraps all main content. 
+          Only applies blur if 'contact' is open. 
+          If 'about' is open, we keep it clear so the Nav is still visible. */}
+      <div className={`w-full h-full transition-all duration-500 ease-in-out ${activeSection === 'contact' ? 'blur-sm opacity-50 scale-[0.99]' : ''}`}>
         
         {/* TOP LEFT CONTENT */}
-        <div className="absolute top-2 left-2 flex flex-col items-start">
+        <div className="absolute top-2 left-2 flex flex-col items-start z-10">
           
           {/* Name */}
           <h1 className={`${baseStyle} ${sectionGap}`}>
             Kim-Wansbrough, Calim
           </h1>
           
-          {/* Contact Line - ADDED ONCLICK HERE */}
+          {/* Contact Line */}
           <div 
-            onClick={() => setIsContactOpen(true)}
+            onClick={() => setActiveSection('contact')}
             className={`flex items-baseline ${sectionGap} group cursor-pointer`}
           >
             <span className={`${baseStyle} group-hover:opacity-60 transition-opacity`}>
@@ -51,29 +57,32 @@ const App = () => {
           {/* Navigation List */}
           <nav className="flex flex-col space-y-1">
             {menuItems.map((item) => (
-              <a 
+              <div 
                 key={item.id}
-                href="#"
-                className={`${baseStyle} hover:opacity-50 transition-opacity block`}
+                onClick={item.action}
+                className={`${baseStyle} hover:opacity-50 transition-opacity block cursor-pointer`}
               >
                 {item.id}–{item.label}
-              </a>
+              </div>
             ))}
           </nav>
         </div>
 
-        {/* BOTTOM RIGHT CONTENT */}
-        <div className="absolute bottom-16 right-16 text-right flex flex-col items-end whitespace-nowrap">
-          <p className={`${baseStyle}`}>
-            “Less opinion, more perspective”
-          </p>
-          <p className={`${baseStyle} mt-0`}>
-            Brandon McCartney
-          </p>
-        </div>
+        {/* BOTTOM RIGHT CONTENT - Quote */}
+        {/* We hide the quote when 'About' is open to make room for the panel */}
+        {activeSection !== 'about' && (
+          <div className="absolute bottom-16 right-16 text-right flex flex-col items-end whitespace-nowrap transition-opacity duration-300">
+            <p className={`${baseStyle}`}>
+              “Less opinion, more perspective”
+            </p>
+            <p className={`${baseStyle} mt-0`}>
+              Brandon McCartney
+            </p>
+          </div>
+        )}
 
         {/* BOTTOM LEFT TIMESTAMP */}
-        <div className="absolute bottom-3 left-3">
+        <div className="absolute bottom-3 left-3 z-0">
           <p className="text-sm font-medium text-gray-400 tracking-wide font-sans translate-y-2">
             Last Updated: 1.05.26
           </p>
@@ -81,10 +90,10 @@ const App = () => {
 
       </div>
 
-      {/* 2. CONTACT OVERLAY: POPS UP WHEN STATE IS TRUE */}
-      {isContactOpen && (
+      {/* 2. CONTACT OVERLAY: POPS UP WHEN STATE IS 'contact' */}
+      {activeSection === 'contact' && (
         <div 
-          onClick={() => setIsContactOpen(false)}
+          onClick={closeAll}
           className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer"
         >
           <div className="flex flex-col items-center text-center font-helvetica text-[#1c1c1c] text-base md:text-lg leading-none font-normal tracking-tight">
@@ -107,6 +116,11 @@ const App = () => {
             </p>
           </div>
         </div>
+      )}
+
+      {/* 3. ABOUT ME PANEL: SLIDES IN WHEN STATE IS 'about' */}
+      {activeSection === 'about' && (
+        <AboutMe onClose={closeAll} baseStyle={baseStyle} />
       )}
       
     </main>

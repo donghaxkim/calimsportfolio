@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Prioritizes Helvetica Neue, then Helvetica, then Arial
-        helvetica: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+        // Monument Grotesk font family
+        helvetica: ['"Monument Grotesk"', 'sans-serif'],
+        sans: ['"Monument Grotesk"', 'sans-serif'],
       },
     },
   },
