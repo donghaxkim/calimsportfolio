@@ -1,60 +1,43 @@
 import React, { useState } from 'react';
-import AboutMe from './components/AboutMe'; // Make sure this path matches where you put the file
+import AboutMe from './components/aboutme';
+import Experience from './components/experience'; // IMPORT NEW COMPONENT
 
 const App = () => {
-  // STATE: Tracks which section is active ('contact', 'about', or null)
+  // Active Section can be 'contact', 'about', 'experience', or null
   const [activeSection, setActiveSection] = useState(null);
-
-  // Helper function to close any open section
   const closeAll = () => setActiveSection(null);
 
   const menuItems = [
     { id: '01', label: 'About Me', action: () => setActiveSection('about') },
-    { id: '02', label: 'Experience', action: () => {} },
+    { id: '02', label: 'Experience', action: () => setActiveSection('experience') }, // UPDATED ACTION
     { id: '03', label: 'Portfolio', action: () => {} },
     { id: '04', label: 'Surface Modeling', action: () => {} },
     { id: '05', label: 'For Fun', action: () => {} },
   ];
 
-  // STYLE VARIABLES
-  // text-[3.25vw]: Small, elegant size.
-  // font-light: Thinner weight (300).
-  const baseStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-light";
-
-  // SPACING VARIABLE
+  const baseStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-light font-monument";
   const sectionGap = "mb-[7vh]"; 
 
   return (
-    <main className="relative w-screen h-screen bg-white overflow-hidden select-none cursor-default font-helvetica">
+    <main className="relative w-screen h-screen bg-white overflow-hidden select-none cursor-default font-monument">
       
-      {/* 1. BLUR WRAPPER: Wraps all main content. 
-          Only applies blur if 'contact' is open. 
-          If 'about' is open, we keep it clear so the Nav is still visible. */}
+      {/* BLUR WRAPPER - Active for 'contact' only */}
       <div className={`w-full h-full transition-all duration-500 ease-in-out ${activeSection === 'contact' ? 'blur-sm opacity-50 scale-[0.99]' : ''}`}>
         
-        {/* TOP LEFT CONTENT */}
+        {/* NAV */}
         <div className="absolute top-2 left-2 flex flex-col items-start z-10">
-          
-          {/* Name */}
           <h1 className={`${baseStyle} ${sectionGap}`}>
             Kim-Wansbrough, Calim
           </h1>
           
-          {/* Contact Line */}
           <div 
             onClick={() => setActiveSection('contact')}
             className={`flex items-baseline ${sectionGap} group cursor-pointer`}
           >
-            <span className={`${baseStyle} group-hover:opacity-60 transition-opacity`}>
-              Contact
-            </span>
-            {/* [i] */}
-            <span className={`${baseStyle} ml-3 group-hover:opacity-60 transition-opacity`}>
-              [i]
-            </span>
+            <span className={`${baseStyle} group-hover:opacity-60 transition-opacity`}>Contact</span>
+            <span className={`${baseStyle} ml-3 group-hover:opacity-60 transition-opacity`}>[i]</span>
           </div>
 
-          {/* Navigation List */}
           <nav className="flex flex-col space-y-1">
             {menuItems.map((item) => (
               <div 
@@ -68,47 +51,34 @@ const App = () => {
           </nav>
         </div>
 
-        {/* BOTTOM RIGHT CONTENT - Quote */}
-        {/* We hide the quote when 'About' is open to make room for the panel */}
-        {activeSection !== 'about' && (
+        {/* QUOTE - Hidden if ANY side panel is open ('about' OR 'experience') */}
+        {activeSection !== 'about' && activeSection !== 'experience' && (
           <div className="absolute bottom-16 right-16 text-right flex flex-col items-end whitespace-nowrap transition-opacity duration-300">
-            <p className={`${baseStyle}`}>
-              “Less opinion, more perspective”
-            </p>
-            <p className={`${baseStyle} mt-0`}>
-              Brandon McCartney
-            </p>
+            <p className={`${baseStyle}`}>“Less opinion, more perspective”</p>
+            <p className={`${baseStyle} mt-0`}>Brandon McCartney</p>
           </div>
         )}
 
-        {/* BOTTOM LEFT TIMESTAMP */}
+        {/* TIMESTAMP */}
         <div className="absolute bottom-3 left-3 z-0">
-          <p className="text-sm font-medium text-gray-400 tracking-wide font-sans translate-y-2">
+          <p className="text-sm font-medium text-gray-400 tracking-wide font-monument translate-y-2">
             Last Updated: 1.05.26
           </p>
         </div>
 
       </div>
 
-      {/* 2. CONTACT OVERLAY: POPS UP WHEN STATE IS 'contact' */}
+      {/* OVERLAY: CONTACT */}
       {activeSection === 'contact' && (
         <div 
           onClick={closeAll}
           className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer"
         >
-          <div className="flex flex-col items-center text-center font-helvetica text-[#1c1c1c] text-base md:text-lg leading-none font-normal tracking-tight">
-            <a 
-              href="https://linkedin.com/in/ckimwans" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="hover:opacity-50 transition-opacity block"
-            >
+          <div className="flex flex-col items-center text-center font-monument text-[#1c1c1c] text-base md:text-lg leading-none font-normal tracking-tight">
+            <a href="https://linkedin.com/in/ckimwans" target="_blank" rel="noreferrer" className="hover:opacity-50 transition-opacity block">
               linkedin.com/in/ckimwans
             </a>
-            <a 
-              href="mailto:ckimwans@uwaterloo.ca" 
-              className="hover:opacity-50 transition-opacity block"
-            >
+            <a href="mailto:ckimwans@uwaterloo.ca" className="hover:opacity-50 transition-opacity block">
               ckimwans@uwaterloo.ca
             </a>
             <p className="cursor-text block">
@@ -118,9 +88,14 @@ const App = () => {
         </div>
       )}
 
-      {/* 3. ABOUT ME PANEL: SLIDES IN WHEN STATE IS 'about' */}
+      {/* SLIDE-IN: ABOUT ME */}
       {activeSection === 'about' && (
-        <AboutMe onClose={closeAll} baseStyle={baseStyle} />
+        <AboutMe onClose={closeAll} />
+      )}
+
+      {/* SLIDE-IN: EXPERIENCE (NEW) */}
+      {activeSection === 'experience' && (
+        <Experience onClose={closeAll} />
       )}
       
     </main>
