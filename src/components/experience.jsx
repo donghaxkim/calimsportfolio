@@ -53,7 +53,6 @@ const Experience = ({ onClose }) => {
       id: '[iii]',
       role: '(Mechanical Design)',
       date: '9 / 24 - Present',
-      // UPDATED: Added details for WATonomous
       hasDetails: true, 
       details: {
         title: 'Mechanical Design Engineer',
@@ -165,7 +164,14 @@ const Experience = ({ onClose }) => {
 
       {/* RIGHT PANEL (LIST) */}
       <div 
-        onClick={(e) => e.stopPropagation()} 
+        onClick={(e) => {
+          // 1. UPDATED: Stop click from reaching the backdrop (which closes the whole modal)
+          e.stopPropagation(); 
+          // 2. UPDATED: If details are open, clicking this panel (whitespace) closes them
+          if (selectedJob) {
+            setSelectedJob(null);
+          }
+        }} 
         className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 p-4 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
       >
         
@@ -182,10 +188,15 @@ const Experience = ({ onClose }) => {
             {jobs.map((job, index) => (
               <div 
                 key={index} 
-                onClick={() => {
+                onClick={(e) => {
                   if (job.hasDetails) {
+                    // 3. UPDATED: Stop propagation so the click doesn't bubble to the panel 
+                    // and immediately close the details we just opened.
+                    e.stopPropagation(); 
                     setSelectedJob(job);
                   }
+                  // If it doesn't have details, we let it bubble, which triggers the panel click
+                  // and effectively deselects any currently selected job (Standard behavior).
                 }}
                 className={`relative w-full ${baseSize} ${job.hasDetails ? 'cursor-pointer hover:opacity-60 transition-opacity' : ''}`}
               >

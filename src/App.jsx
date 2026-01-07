@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import AboutMe from './components/aboutme';
-import Experience from './components/experience'; // IMPORT NEW COMPONENT
+import Experience from './components/experience';
+import Portfolio from './components/Portfolio'; // 1. IMPORT NEW COMPONENT
 
 const App = () => {
-  // Active Section can be 'contact', 'about', 'experience', or null
+  // Active Section can be 'contact', 'about', 'experience', 'portfolio', or null
   const [activeSection, setActiveSection] = useState(null);
   const closeAll = () => setActiveSection(null);
 
   const menuItems = [
     { id: '01', label: 'About Me', action: () => setActiveSection('about') },
-    { id: '02', label: 'Experience', action: () => setActiveSection('experience') }, // UPDATED ACTION
-    { id: '03', label: 'Portfolio', action: () => {} },
+    { id: '02', label: 'Experience', action: () => setActiveSection('experience') },
+    { id: '03', label: 'Portfolio', action: () => setActiveSection('portfolio') }, // 2. UPDATED ACTION
     { id: '04', label: 'Surface Modeling', action: () => {} },
-    { id: '05', label: 'For Fun', action: () => {} },
+    { id: '05', label: 'Free Time', action: () => {} }, // Updated label to match screenshot if needed
   ];
 
   const baseStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-light font-monument";
@@ -51,8 +52,8 @@ const App = () => {
           </nav>
         </div>
 
-        {/* QUOTE - Hidden if ANY side panel is open ('about' OR 'experience') */}
-        {activeSection !== 'about' && activeSection !== 'experience' && (
+        {/* QUOTE - Hidden if ANY side panel is open ('about', 'experience', 'portfolio') */}
+        {activeSection !== 'about' && activeSection !== 'experience' && activeSection !== 'portfolio' && (
           <div className="absolute bottom-16 right-16 text-right flex flex-col items-end whitespace-nowrap transition-opacity duration-300">
             <p className={`${baseStyle}`}>“Less opinion, more perspective”</p>
             <p className={`${baseStyle} mt-0`}>Brandon McCartney</p>
@@ -62,7 +63,7 @@ const App = () => {
         {/* TIMESTAMP */}
         <div className="absolute bottom-3 left-3 z-0">
           <p className="text-sm font-medium text-gray-400 tracking-wide font-monument translate-y-2">
-            Last Updated: 1.05.26
+            Last Updated: 1.07.26
           </p>
         </div>
 
@@ -93,11 +94,16 @@ const App = () => {
         <AboutMe onClose={closeAll} />
       )}
 
-      {/* SLIDE-IN: EXPERIENCE (NEW) */}
+      {/* SLIDE-IN: EXPERIENCE */}
       {activeSection === 'experience' && (
         <Experience onClose={closeAll} />
       )}
       
+      {/* SLIDE-IN: PORTFOLIO (NEW) */}
+      {activeSection === 'portfolio' && (
+        <Portfolio onClose={closeAll} />
+      )}
+
     </main>
   );
 };
