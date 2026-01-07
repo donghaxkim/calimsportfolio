@@ -1,30 +1,29 @@
 import React from 'react';
 
-const AboutMe = ({ onClose, baseStyle }) => {
+const AboutMe = ({ onClose }) => {
   return (
-    // 1. WRAPPER: Added 'font-monument' so everything inherits the new font
     <div className="fixed inset-0 z-40 flex justify-end font-monument">
       
-      {/* 2. BACKDROP: Invisible layer that catches clicks "outside" the panel */}
+      {/* BACKDROP */}
       <div 
         onClick={onClose} 
         className="absolute inset-0 w-full h-full cursor-default"
       />
 
-      {/* 3. THE PANEL: Changed w-[50%] to w-[50vw] for exact half-screen width */}
+      {/* THE PANEL */}
       <div 
         onClick={(e) => e.stopPropagation()} 
-        className="relative w-[55vw] h-full bg-white border-l border-gray-200 p-6 flex flex-col justify-between shadow-xl animate-slide-in-right"
+        className="relative w-[55vw] h-full bg-white border-l border-gray-200 p-6 flex flex-col justify-between"
       >
         
         {/* Top Section: Header + Bio Text */}
         <div className="flex justify-between items-start mt-2">
-          {/* Header: Made smaller (text-[2vw]) and removed {baseStyle} */}
+          {/* Header */}
           <h2 className="text-[2vw] leading-none tracking-tight text-[#111] font-light font-monument">
             01—About me
           </h2>
           
-          {/* Bio Text: Updated to font-monument */}
+          {/* Bio Text */}
           <div className="w-[45%] text-xs md:text-sm font-monument leading-snug text-black text-right md:text-left">
             <p className="mb-4">
               I'm a mechanical engineering student interested in robotics, consumer electronics and technology.
@@ -44,7 +43,7 @@ const AboutMe = ({ onClose, baseStyle }) => {
               alt="Duck Inspiration" 
               className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300"
             />
-            {/* Caption: Updated to font-monument */}
+            {/* Caption */}
             <p className="text-[10px] mt-1 font-monument text-black">My Inspiration</p>
           </div>
 
@@ -55,7 +54,7 @@ const AboutMe = ({ onClose, baseStyle }) => {
               alt="My Hero" 
               className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300"
             />
-            {/* Caption: Updated to font-monument */}
+            {/* Caption */}
             <p className="text-[10px] mt-1 font-monument text-black">My Hero</p>
           </div>
         </div>
