@@ -22,7 +22,7 @@ const Experience = ({ onClose }) => {
           'Developed PLC logic for 9 assembly stations utilizing different sensors and tools'
         ],
         skills: 'PLCs, Mechanical Design, User Centric Design, GD&T, DFM, DFA',
-        image: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=2013&auto=format&fit=crop', 
+        image: '/Black Stone.png', 
         caption: 'Milky Way from Black Rock Desert'
       }
     },
@@ -44,7 +44,7 @@ const Experience = ({ onClose }) => {
           'Designed and fabricated modular fixtures to improve ergonomics and effeciency for factory workers'
         ],
         skills: 'Injection Molding Principles, GD&T, Excel, Statistical Analysis, Process Capability',
-        image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=3432&auto=format&fit=crop',
+        image: '/Dmt Field.png',
         caption: 'Field Next to Office'
       }
     },
@@ -67,8 +67,7 @@ const Experience = ({ onClose }) => {
           'Develop mounting equipment to hold LiDAR sensors, cameras and other equipment to the car'
         ],
         skills: 'Mechanical Design, Actuator Design, FEA, Thermal Management',
-        // Placeholder image for Robot/Car vibe
-        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop',
+        image: '/WATO-banner.png',
         caption: 'WATO'
       }
     },
@@ -151,7 +150,7 @@ const Experience = ({ onClose }) => {
               <img 
                 src={selectedJob.details?.image} 
                 alt="Experience Detail" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full object-cover"
               />
             </div>
             <p className="text-[0.6vw] text-center mt-2 uppercase tracking-widest text-gray-500">

@@ -41,7 +41,7 @@ const AboutMe = ({ onClose }) => {
             <img 
               src="https://media.discordapp.net/attachments/1119747231459610724/1119747231459610724/duck.jpg" 
               alt="Duck Inspiration" 
-              className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              className="w-full aspect-square object-cover"
             />
             {/* Caption */}
             <p className="text-[10px] mt-1 font-monument text-black">My Inspiration</p>
@@ -52,7 +52,7 @@ const AboutMe = ({ onClose }) => {
             <img 
               src="https://media.discordapp.net/attachments/1119747231459610724/1119747231459610724/lilb.jpg" 
               alt="My Hero" 
-              className="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              className="w-full aspect-square object-cover"
             />
             {/* Caption */}
             <p className="text-[10px] mt-1 font-monument text-black">My Hero</p>
