@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Monument Grotesk font family
-        monument: ['"Monument Grotesk"', 'sans-serif'],
-        helvetica: ['"Monument Grotesk"', 'sans-serif'],
-        sans: ['"Monument Grotesk"', 'sans-serif'],
+        // Monument Grotesk font family (using Inter as temporary alternative)
+        monument: ['Inter', '"Monument Grotesk"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        helvetica: ['Inter', '"Monument Grotesk"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Inter', '"Monument Grotesk"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       keyframes: {
         'slide-in-right': {
