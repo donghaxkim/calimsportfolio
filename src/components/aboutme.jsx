@@ -13,13 +13,13 @@ const AboutMe = ({ onClose }) => {
       {/* THE PANEL */}
       <div 
         onClick={(e) => e.stopPropagation()} 
-        className="relative w-[55vw] h-full bg-white border-l border-gray-200 p-6 flex flex-col justify-between"
+        className="relative w-[55vw] h-full bg-white border-l border-gray-200 p-6 pt-4 flex flex-col justify-between"
       >
         
         {/* Top Section: Header + Bio Text */}
-        <div className="flex justify-between items-start mt-2">
+        <div className="flex justify-between items-start mt-[-0.5vh]">
           {/* Header */}
-          <h2 className="text-[2vw] leading-none tracking-tight text-[#111] font-normal font-monument">
+          <h2 className="text-[2.9vw] leading-none tracking-tight text-[#111] font-semibold font-monument">
             01—About me
           </h2>
           

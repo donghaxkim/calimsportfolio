@@ -79,9 +79,9 @@ const Experience = ({ onClose }) => {
     },
   ];
 
-  const baseSize = "text-[2.25vw] leading-none tracking-tight text-[#111] font-normal font-monument";
-  const labelSize = "text-[1.5vw] leading-none tracking-tight text-[#111] font-medium font-monument";
-  const bodySize = "text-[0.75vw] leading-tight tracking-normal text-[#111] font-normal font-monument";
+  const baseSize = "text-[2.9vw] leading-none tracking-tight text-[#111] font-semibold font-monument";
+  const labelSize = "text-[1.6vw] leading-none tracking-tight text-[#111] font-medium font-monument";
+  const bodySize = "text-[0.8vw] leading-tight tracking-normal text-[#111] font-normal font-monument";
 
   return (
     <div className="fixed inset-0 z-40 flex font-monument">
@@ -100,7 +100,7 @@ const Experience = ({ onClose }) => {
         >
           {/* Header */}
           <div className="mt-2 mb-8 min-h-[4vw] flex items-end justify-center">
-            <h2 className="text-[2vw] leading-none text-center font-medium">
+            <h2 className="text-[2.2vw] leading-none text-center font-medium">
               {selectedJob.details?.title}
             </h2>
           </div>
@@ -172,12 +172,12 @@ const Experience = ({ onClose }) => {
             setSelectedJob(null);
           }
         }} 
-        className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 p-4 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
+        className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 p-4 pt-2 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
       >
         
         <div>
           {/* HEADER */}
-          <div className="mt-2 mb-9">
+          <div className="mt-[-0.5vh] mb-6">
             <h2 className={`${baseSize}`}>
               02—Experience
             </h2>

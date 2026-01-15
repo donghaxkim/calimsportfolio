@@ -46,7 +46,7 @@ const Portfolio = ({ onClose }) => {
   ];
 
   // Shared font styles
-  const baseSize = "text-[2.25vw] leading-none tracking-tight text-[#111] font-normal font-monument";
+  const baseSize = "text-[2.9vw] leading-none tracking-tight text-[#111] font-semibold font-monument";
 
   return (
     <div className="fixed inset-0 z-40 flex font-monument">
@@ -63,12 +63,12 @@ const Portfolio = ({ onClose }) => {
       {/* RIGHT PANEL (PORTFOLIO LIST) */}
       <div 
         onClick={(e) => e.stopPropagation()} 
-        className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 p-4 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
+        className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 p-4 pt-2 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
       >
         
         <div>
           {/* HEADER */}
-          <div className="mt-2 mb-9">
+          <div className="mt-[-0.5vh] mb-6">
             <h2 className={`${baseSize}`}>
               03—Portfolio
             </h2>
