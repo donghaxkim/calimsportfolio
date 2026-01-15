@@ -46,7 +46,7 @@ const Portfolio = ({ onClose }) => {
   ];
 
   // Shared font styles
-  const baseSize = "text-[2.25vw] leading-none tracking-tight text-[#111] font-light font-monument";
+  const baseSize = "text-[2.25vw] leading-none tracking-tight text-[#111] font-normal font-monument";
 
   return (
     <div className="fixed inset-0 z-40 flex font-monument">

@@ -16,7 +16,7 @@ const App = () => {
     { id: '05', label: 'Free Time', action: () => {} }, // Updated label to match screenshot if needed
   ];
 
-  const baseStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-light font-monument";
+  const baseStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-normal font-monument";
   const sectionGap = "mb-[7vh]"; 
 
   return (
@@ -62,7 +62,7 @@ const App = () => {
 
         {/* TIMESTAMP */}
         <div className="absolute bottom-3 left-3 z-0">
-          <p className="text-sm font-medium text-gray-400 tracking-wide font-monument translate-y-2">
+          <p className="text-sm font-semibold text-gray-400 tracking-wide font-monument translate-y-2">
             Last Updated: 1.07.26
           </p>
         </div>
@@ -75,7 +75,7 @@ const App = () => {
           onClick={closeAll}
           className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer"
         >
-          <div className="flex flex-col items-center text-center font-monument text-[#1c1c1c] text-base md:text-lg leading-none font-normal tracking-tight">
+          <div className="flex flex-col items-center text-center font-monument text-[#1c1c1c] text-base md:text-lg leading-none font-medium tracking-tight">
             <a href="https://linkedin.com/in/ckimwans" target="_blank" rel="noreferrer" className="hover:opacity-50 transition-opacity block">
               linkedin.com/in/ckimwans
             </a>

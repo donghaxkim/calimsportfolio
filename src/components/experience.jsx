@@ -79,9 +79,9 @@ const Experience = ({ onClose }) => {
     },
   ];
 
-  const baseSize = "text-[2.25vw] leading-none tracking-tight text-[#111] font-light font-monument";
-  const labelSize = "text-[1.5vw] leading-none tracking-tight text-[#111] font-normal font-monument";
-  const bodySize = "text-[0.75vw] leading-tight tracking-normal text-[#111] font-monument";
+  const baseSize = "text-[2.25vw] leading-none tracking-tight text-[#111] font-normal font-monument";
+  const labelSize = "text-[1.5vw] leading-none tracking-tight text-[#111] font-medium font-monument";
+  const bodySize = "text-[0.75vw] leading-tight tracking-normal text-[#111] font-normal font-monument";
 
   return (
     <div className="fixed inset-0 z-40 flex font-monument">
@@ -100,7 +100,7 @@ const Experience = ({ onClose }) => {
         >
           {/* Header */}
           <div className="mt-2 mb-8 min-h-[4vw] flex items-end justify-center">
-            <h2 className="text-[2vw] leading-none text-center font-normal">
+            <h2 className="text-[2vw] leading-none text-center font-medium">
               {selectedJob.details?.title}
             </h2>
           </div>

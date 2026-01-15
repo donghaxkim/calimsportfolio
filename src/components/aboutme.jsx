@@ -19,7 +19,7 @@ const AboutMe = ({ onClose }) => {
         {/* Top Section: Header + Bio Text */}
         <div className="flex justify-between items-start mt-2">
           {/* Header */}
-          <h2 className="text-[2vw] leading-none tracking-tight text-[#111] font-light font-monument">
+          <h2 className="text-[2vw] leading-none tracking-tight text-[#111] font-normal font-monument">
             01—About me
           </h2>
           
