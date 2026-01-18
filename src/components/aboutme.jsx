@@ -19,12 +19,12 @@ const AboutMe = ({ onClose }) => {
         {/* Top Section: Header + Bio Text */}
         <div className="flex justify-between items-start mt-[-0.5vh]">
           {/* Header */}
-          <h2 className="text-[2.9vw] leading-none tracking-tight text-[#111] font-semibold font-monument">
+          <h2 className="text-[2.9vw] leading-none tracking-tight text-[#111] font-normal font-monument">
             01—About me
           </h2>
           
           {/* Bio Text */}
-          <div className="w-[45%] text-xs md:text-sm font-monument leading-snug text-black text-right md:text-left">
+          <div className="w-[45%] text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-normal font-monument text-right md:text-left">
             <p className="mb-4">
               I'm a mechanical engineering student interested in robotics, consumer electronics and technology.
             </p>
@@ -44,7 +44,7 @@ const AboutMe = ({ onClose }) => {
               className="w-full aspect-square object-cover"
             />
             {/* Caption */}
-            <p className="text-[10px] mt-1 font-monument text-black">My Inspiration</p>
+            <p className="text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-normal font-monument mt-1">My Inspiration</p>
           </div>
 
           {/* Image 2 */}
@@ -55,14 +55,14 @@ const AboutMe = ({ onClose }) => {
               className="w-full aspect-square object-cover"
             />
             {/* Caption */}
-            <p className="text-[10px] mt-1 font-monument text-black">My Hero</p>
+            <p className="text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-normal font-monument mt-1">My Hero</p>
           </div>
         </div>
 
         {/* Bottom Right: Close Button */}
         <button 
           onClick={onClose}
-          className="absolute bottom-3 right-3 text-xs md:text-sm text-black hover:opacity-50 transition-opacity font-monument"
+          className="absolute bottom-3 right-3 text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-normal font-monument hover:opacity-50 transition-opacity"
         >
           (Close)
         </button>

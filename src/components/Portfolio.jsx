@@ -46,7 +46,8 @@ const Portfolio = ({ onClose }) => {
   ];
 
   // Shared font styles
-  const baseSize = "text-[2.9vw] leading-none tracking-tight text-[#111] font-semibold font-monument";
+  const baseSize = "text-[2.9vw] leading-none tracking-tight text-[#111] font-normal font-monument";
+  const contentStyle = "text-[3.25vw] leading-[0.85] tracking-[-0.03em] text-[#111] font-normal font-monument";
 
   return (
     <div className="fixed inset-0 z-40 flex font-monument">
@@ -79,10 +80,10 @@ const Portfolio = ({ onClose }) => {
             {projects.map((project, index) => (
               <div 
                 key={index} 
-                className={`relative w-full ${baseSize} hover:opacity-60 transition-opacity cursor-pointer`}
+                className="relative w-full hover:opacity-60 transition-opacity cursor-pointer"
               >
                 {/* Flex container for Name+ID and Status */}
-                <div className="flex justify-between items-baseline whitespace-nowrap">
+                <div className={`flex justify-between items-baseline whitespace-nowrap ${contentStyle}`}>
                   
                   {/* LEFT: Name + ID */}
                   <div>
@@ -103,7 +104,7 @@ const Portfolio = ({ onClose }) => {
         {/* CLOSE BUTTON */}
         <button 
           onClick={onClose}
-          className="self-end mb-3 mr-3 text-xs md:text-sm text-black hover:opacity-50 transition-opacity font-monument"
+          className={`self-end mb-3 mr-3 hover:opacity-50 transition-opacity ${contentStyle}`}
         >
           (Close)
         </button>

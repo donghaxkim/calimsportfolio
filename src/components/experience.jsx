@@ -6,9 +6,9 @@ const Experience = ({ onClose }) => {
   const jobs = [
     {
       company: 'Tesla',
-      id: '[i]',
+      id: '[>]',
       role: '(Equipment Design)',
-      date: '9 / 25 - 12 / 25',
+      date: '9 / 25–12 / 25',
       hasDetails: true,
       details: {
         title: 'Equipment Design Engineer',
@@ -28,9 +28,9 @@ const Experience = ({ onClose }) => {
     },
     {
       company: 'Magna',
-      id: '[ii]',
+      id: '[>]',
       role: '(Manufacturing)',
-      date: '5 / 25 - 9 / 25',
+      date: '5 / 25–9 / 25',
       hasDetails: true,
       details: {
         title: 'Manufacturing Engineer',
@@ -50,9 +50,9 @@ const Experience = ({ onClose }) => {
     },
     {
       company: 'WATonomous',
-      id: '[iii]',
+      id: '[>]',
       role: '(Mechanical Design)',
-      date: '9 / 24 - Present',
+      date: '9 / 24–Present',
       hasDetails: true, 
       details: {
         title: 'Mechanical Design Engineer',
@@ -74,13 +74,18 @@ const Experience = ({ onClose }) => {
       company: 'Richmond Hill High School',
       id: '', 
       role: '(Physics & Calculus Tutor)',
-      date: '9 / 22 - 6 / 24',
+      date: '9 / 22–6 / 24',
       hasDetails: false,
+      isSeparate: true,
     },
   ];
 
-  const baseSize = "text-[2.9vw] leading-none tracking-tight text-[#111] font-semibold font-monument";
-  const labelSize = "text-[1.6vw] leading-none tracking-tight text-[#111] font-medium font-monument";
+  // UPDATED: Changed leading-snug to leading-none for tighter text block
+  const itemStyle = "text-[2.5vw] leading-none tracking-tight text-[#111] font-normal font-monument";
+  const headerStyle = "text-[2.5vw] leading-none tracking-tight text-[#111] font-normal font-monument";
+  const closeStyle = "text-[1.2vw] leading-none tracking-tight text-[#111] font-normal font-monument";
+  
+  const labelSize = "text-[1.6vw] leading-none tracking-tight text-[#111] font-normal font-monument";
   const bodySize = "text-[0.8vw] leading-tight tracking-normal text-[#111] font-normal font-monument";
 
   return (
@@ -100,50 +105,38 @@ const Experience = ({ onClose }) => {
         >
           {/* Header */}
           <div className="mt-2 mb-8 min-h-[4vw] flex items-end justify-center">
-            <h2 className="text-[2.2vw] leading-none text-center font-medium">
+            <h2 className="text-[2.2vw] leading-none text-center font-normal">
               {selectedJob.details?.title}
             </h2>
           </div>
 
-          {/* Content Container */}
+          {/* Content */}
           <div className="flex-grow flex flex-col gap-5 px-4">
-            
-            {/* Responsibilities */}
             <div className="flex w-full">
-              <div className={`w-[35%] ${labelSize}`}>
-                Responsibilities:
-              </div>
+              <div className={`w-[35%] ${labelSize}`}>Responsibilities:</div>
               <div className={`w-[65%] flex flex-col gap-2 ${bodySize}`}>
                 {selectedJob.details?.responsibilities.map((item, i) => (
                   <p key={i}>{item}</p>
                 ))}
               </div>
             </div>
-
-            {/* Impact */}
             <div className="flex w-full">
-              <div className={`w-[35%] ${labelSize}`}>
-                Impact:
-              </div>
+              <div className={`w-[35%] ${labelSize}`}>Impact:</div>
               <div className={`w-[65%] flex flex-col gap-2 ${bodySize}`}>
                 {selectedJob.details?.impact.map((item, i) => (
                   <p key={i}>{item}</p>
                 ))}
               </div>
             </div>
-
-            {/* Skills */}
             <div className="flex w-full">
-              <div className={`w-[35%] ${labelSize}`}>
-                Skills:
-              </div>
+              <div className={`w-[35%] ${labelSize}`}>Skills:</div>
               <div className={`w-[65%] ${bodySize}`}>
                 <p>{selectedJob.details?.skills}</p>
               </div>
             </div>
           </div>
 
-          {/* Image Section */}
+          {/* Image */}
           <div className="mt-auto mb-4 px-4 pt-4">
             <div className="w-[90%] mx-auto aspect-[16/9] bg-gray-100 overflow-hidden relative">
               <img 
@@ -165,44 +158,38 @@ const Experience = ({ onClose }) => {
       {/* RIGHT PANEL (LIST) */}
       <div 
         onClick={(e) => {
-          // 1. UPDATED: Stop click from reaching the backdrop (which closes the whole modal)
           e.stopPropagation(); 
-          // 2. UPDATED: If details are open, clicking this panel (whitespace) closes them
           if (selectedJob) {
             setSelectedJob(null);
           }
         }} 
-        className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 p-4 pt-2 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
+        className="relative z-10 w-[55vw] h-full bg-white border-l border-gray-200 px-6 py-4 flex flex-col animate-in slide-in-from-right duration-300 overflow-y-auto justify-between"
       >
         
         <div>
           {/* HEADER */}
-          <div className="mt-[-0.5vh] mb-6">
-            <h2 className={`${baseSize}`}>
+          <div className="mb-8 mt-2">
+            <h2 className={`${headerStyle}`}>
               02—Experience
             </h2>
           </div>
 
           {/* EXPERIENCE LIST */}
-          <div className="flex flex-col space-y-7 w-full pr-4">
+          <div className="flex flex-col gap-6 w-full">
             {jobs.map((job, index) => (
               <div 
                 key={index} 
                 onClick={(e) => {
                   if (job.hasDetails) {
-                    // 3. UPDATED: Stop propagation so the click doesn't bubble to the panel 
-                    // and immediately close the details we just opened.
                     e.stopPropagation(); 
                     setSelectedJob(job);
                   }
-                  // If it doesn't have details, we let it bubble, which triggers the panel click
-                  // and effectively deselects any currently selected job (Standard behavior).
                 }}
-                className={`relative w-full ${baseSize} ${job.hasDetails ? 'cursor-pointer hover:opacity-60 transition-opacity' : ''}`}
+                className={`relative w-full ${job.isSeparate ? 'mt-12' : ''} ${job.hasDetails ? 'cursor-pointer hover:opacity-60 transition-opacity' : ''}`}
               >
                 
                 {/* ROW 1: Company + ID + Date */}
-                <div className="flex justify-between items-baseline whitespace-nowrap">
+                <div className={`flex justify-between items-baseline whitespace-nowrap ${itemStyle}`}>
                   <div>
                     {job.company} <span className="ml-2">{job.id}</span>
                   </div>
@@ -212,7 +199,8 @@ const Experience = ({ onClose }) => {
                 </div>
 
                 {/* ROW 2: Role */}
-                <div className="mt-1 whitespace-nowrap ml-[5.5vw]">
+                {/* UPDATED: Changed mt-0 to mt-[-0.5vw] to pull it closer to the line above */}
+                <div className={`mt-[-0.5vw] whitespace-nowrap ml-[4vw] ${itemStyle}`}>
                   {job.role}
                 </div>
 
@@ -224,7 +212,7 @@ const Experience = ({ onClose }) => {
         {/* CLOSE BUTTON */}
         <button 
           onClick={onClose}
-          className="self-end mb-3 mr-3 text-xs md:text-sm text-black hover:opacity-50 transition-opacity font-monument"
+          className={`self-end mb-3 mr-3 hover:opacity-50 transition-opacity ${closeStyle}`}
         >
           (Close)
         </button>
